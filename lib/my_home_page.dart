@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'currency_rate_widget.dart';
+import 'message_widget.dart';
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
+  MyHomePage({super.key, required this.title});
 
   // This widget is the home page of your application. It is stateful, meaning
   // that it has a State object (defined below) that contains fields that affect
@@ -51,92 +53,95 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
         child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          //
-          // TRY THIS: Invoke "debug painting" (choose the "Toggle Debug Paint"
-          // action in the IDE, or press "p" in the console), to see the
-          // wireframe for each widget.
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            SizedBox(
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
+            RichText(
+              text: TextSpan(
                 children: [
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 5),
-                    child: SizedBox(
-                        height: 20,
-                        width:20,
-                        child: ColoredBox(color: Colors.indigo)
-                    )
+                  TextSpan(
+                    text: 'Trip',
+                    style: TextStyle(
+                      color: const Color.fromARGB(255, 26, 38, 98),
+                      fontSize: 32,
+                      fontWeight: FontWeight.bold,
+                      shadows: [
+                        Shadow(
+                          offset: const Offset(2, 2),
+                          blurRadius: 10,
+                          color: const Color.fromARGB(
+                            255,
+                            79,
+                            79,
+                            79,
+                          ).withValues(alpha: 0.2),
+                        ),
+                      ],
+                    ),
                   ),
-                  Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 5),
-                      child: SizedBox(
-                          height: 20,
-                          width:20,
-                          child: ColoredBox(color: Colors.indigo)
-                      )
+                  TextSpan(
+                    text: '&',
+                    style: TextStyle(
+                      color: const Color.fromARGB(255, 180, 159, 0),
+                      shadows: [
+                        Shadow(
+                          offset: const Offset(2, 2),
+                          blurRadius: 10,
+                          color: const Color.fromARGB(
+                            255,
+                            79,
+                            79,
+                            79,
+                          ).withValues(alpha: 0.2),
+                        ),
+                      ],
+                      fontSize: 32,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  TextSpan(
+                    text: 'Payzies',
+                    style: TextStyle(
+                      color: const Color.fromARGB(255, 26, 38, 98),
+                      fontSize: 32,
+                      fontWeight: FontWeight.bold,
+                      shadows: [
+                        Shadow(
+                          offset: const Offset(2, 2),
+                          blurRadius: 10,
+                          color: const Color.fromARGB(
+                            255,
+                            79,
+                            79,
+                            79,
+                          ).withValues(alpha: 0.2),
+                        ),
+                      ],
+                    ),
                   ),
                 ],
-              )
+              ),
             ),
-            SizedBox(
-                child: Row(
-                  children: [
-                    Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 5),
-                        child: SizedBox(
-                            height: 20,
-                            width:20,
-                            child: ColoredBox(color: Colors.indigo)
-                        )
-                    ),
-                    Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 5),
-                        child: SizedBox(
-                            height: 20,
-                            width:20,
-                            child: ColoredBox(color: Colors.indigo)
-                        )
-                    ),
-                  ],
-                )
-            ),
-            SizedBox(
-                child: Row(
-                  children: [
-                    Padding(
-                        padding: EdgeInsets.only(left: 8, right: 8),
-                        child: SizedBox(
-                            height: 20,
-                            width:20,
-                            child: ColoredBox(color: Colors.indigo)
-                        )
-                    ),
-                    SizedBox(width: 12),
-                    Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 5),
-                        child: SizedBox(
-                            height: 20,
-                            width:20,
-                            child: ColoredBox(color: Colors.indigo)
-                        )
-                    ),
-                  ],
-                )
-            ),
+            const CurrencyRateWidget(),
+            const MessageWidget(),
+            // SizedBox(
+            //   height: 100,
+            //   width: 100,
+            //   child: Image.asset('assets/images/icon.png'),
+            // ),
+            // Expanded(
+            //   child: ListView.builder(
+            //     itemCount: 1000,
+            //     itemBuilder: (context, index) {
+            //       return Column(
+            //         children: [
+            //           Center(child: Text('hello $index')),
+            //           const SizedBox(height: 10),
+            //         ],
+            //       );
+            //     },
+            //   ),
+            // ),
           ],
         ),
       ),
@@ -144,6 +149,37 @@ class _MyHomePageState extends State<MyHomePage> {
         onPressed: _incrementCounter,
         tooltip: 'Increment',
         child: const Icon(Icons.add),
+      ),
+
+      bottomNavigationBar: Container(
+        height: 50.0,
+        color: Colors.blue,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: <Widget>[
+            IconButton(
+              icon: const Icon(Icons.home),
+              color: Colors.white,
+              onPressed: () {
+                // Handle home button press
+              },
+            ),
+            IconButton(
+              icon: const Icon(Icons.search),
+              color: Colors.white,
+              onPressed: () {
+                // Handle search button press
+              },
+            ),
+            IconButton(
+              icon: const Icon(Icons.person),
+              color: Colors.white,
+              onPressed: () {
+                // Handle profile button press
+              },
+            ),
+          ],
+        ),
       ),
     );
   }
