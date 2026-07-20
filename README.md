@@ -1,4 +1,4 @@
-# testapp
+# flutter-learning
 
 A new Flutter project.
 
