@@ -1,40 +1,66 @@
 import 'package:flutter/material.dart';
 import 'package:english_words/english_words.dart';
+import 'package:flutter/rendering.dart';
 
-void main() => runApp(MyApp()); /*1*/
+void main() {
+  debugPaintSizeEnabled = false;
+  runApp(MyApp());
+} /*1*/
 
 class MyApp extends StatelessWidget {
   /*2*/
   @override
   Widget build(BuildContext context) {
-    final wordPair = WordPair.random();
-    /*3*/
     return MaterialApp(
-      /*4*/
-      title: 'Welcome to Flutter',
+      title: 'hello world',
       home: Scaffold(
-        /*5*/
-        appBar: AppBar(/*6*/ title: Text(wordPair.asPascalCase)),
-        body: Center(/*7*/ child: RandomWords()),
+        body: Center(
+          child: Container(
+            child: Text(
+              '!Hello World',
+              textDirection: TextDirection.ltr,
+              // style: TextStyle(fontSize: 32, color: Colors.white),
+            ),
+          ),
+        ),
       ),
     );
   }
 }
 
-class RandomWordsState extends State<RandomWords> {
-  final _suggestions = <WordPair>[];
+// class RandomWordsState extends State<RandomWords> {
+//   final _suggestions = <WordPair>[];
+//   final _biggerFont = const TextStyle(fontSize: 18.0);
 
-  final _biggerFont = const TextStyle(fontSize: 18.0);
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(title: Text('Startup Name Generator')),
+//       body: _buiildSuggestions(),
+//     );
+//   }
 
+//   Widget _buildRow(WordPair pair) {
+//     return ListTile(title: Text(pair.asPascalCase, style: _biggerFont));
+//   }
 
-  @override
-  Widget build(BuildContext context) {
-    final wordPair = WordPair.random();
-    return Text(wordPair.asPascalCase);
-  }
-}
+//   Widget _buiildSuggestions() {
+//     return ListView.builder(
+//       padding: const EdgeInsets.all(16.0),
+//       itemBuilder: (context, i) {
+//         if (i.isOdd) return Divider();
 
-class RandomWords extends StatefulWidget {
-  @override
-  RandomWordsState createState() => new RandomWordsState();
-}
+//         final index = i ~/ 2;
+//         if (index >= _suggestions.length) {
+//           _suggestions.addAll(generateWordPairs().take(10));
+//         }
+//         return _buildRow(_suggestions[index]);
+//       },
+//     );
+//   }
+// }
+
+// class RandomWords extends StatefulWidget {
+//   @override
+//   RandomWordsState createState() => new RandomWordsState();
+// }
