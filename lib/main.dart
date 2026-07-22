@@ -3,7 +3,7 @@ import 'package:english_words/english_words.dart';
 import 'package:flutter/rendering.dart';
 
 void main() {
-  debugPaintSizeEnabled = false;
+  debugPaintSizeEnabled = true;
   runApp(MyApp());
 } /*1*/
 
@@ -12,15 +12,18 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'hello world',
+      title: "hello world",
       home: Scaffold(
+        appBar: AppBar(title: Text("hello")),
         body: Center(
-          child: Container(
-            child: Text(
-              '!Hello World',
-              textDirection: TextDirection.ltr,
-              // style: TextStyle(fontSize: 32, color: Colors.white),
-            ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: <Widget>[
+              Text("hello", style: TextStyle(color: Colors.blue)),
+              Text("hello", style: TextStyle(color: Colors.blue)),
+              Text("hello", style: TextStyle(color: Colors.blue)),
+              Text("hello", style: TextStyle(color: Colors.blue)),
+            ],
           ),
         ),
       ),
